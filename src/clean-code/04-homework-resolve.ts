@@ -14,15 +14,17 @@
     // switch? Object literal? validar posibles colores
     function getFruitsByColor( color: string ): string[] {
 
-        if ( color === 'red' ) {
-            return ['manzana','fresa'];
-        } else if ( color === 'yellow') {
-            return ['piña','banana'];
-        } else if ( color === 'purple') {
-            return ['moras','uvas']
-        } else {
-            throw Error('the color must be: red, yellow, purple');
+        switch(color){
+            case 'red':
+                return ['manzana','fresa'];
+            case 'yellow':
+                return ['piña','banana'];
+            case 'purple':
+                return ['moras','uvas']
+            default:
+                throw Error('the color must be: red, yellow, purple');
         }
+
     }
 
     // Simplificar esta función
@@ -32,27 +34,16 @@
     let isFourthStepWorking = true;
 
     function workingSteps() {
-        if( isFirstStepWorking === true ) {
-            if( isSecondStepWorking === true ) {
-                if( isThirdStepWorking === true ) {
-                    if( isFourthStepWorking === true ) {
-                        return 'Working properly!';
-                    }
-                    else {
-                        return 'Fourth step broken.';
-                    }
-                }
-                else {
-                    return 'Third step broken.';
-                }
-            }
-            else {
-                return 'Second step broken.';
-            }
-        }
-        else {
-            return 'First step broken.';
-        }
+        //Sugerencia usar !isFirstStepWorking para negar el boolean y evitar usar === lo que sea.
+        if (isFirstStepWorking === false) return 'First step broken.';
+    
+        if (isSecondStepWorking === false) return 'Second step broken.';
+
+        if (isThirdStepWorking === false) return 'Third step broken.'; 
+
+        return isFourthStepWorking === false ?  'Fourth step broken.' : 'Working properly!';
+
+       
     }
 
 
